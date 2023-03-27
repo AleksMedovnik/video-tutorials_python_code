@@ -1,21 +1,24 @@
-direction = input('Enter direction: ').lower()
+# direction = input('Введите направление движения: ').lower()
 
-if direction == 'left':
-    print('Я иду налево!')
-elif direction == 'right':
-    print('Я иду направо!')
-elif direction == 'up' or direction == 'top':
-    print('Я ползу вверх!')
-elif direction == 'down' or direction == 'bottom':
-    print('Я спускаюсь вниз!')
-else:
-    print('Выбрано неверное направление')
-
-
+# match direction:
+#     case 'left':
+#         print('Я иду налево!')
+#     case 'right':
+#         print('Я иду направо!')
+#     case 'up' | 'top':
+#         print('Я ползу вверх!')
+#     case 'down' | 'bottom':
+#         print('Я спускаюсь вниз!')
+#     case _:
+#         print('Выбрано неверное направление')
 
 
 def get_user_names(users: list[dict]) -> list[str]:
-    return list(map(lambda user: user['name'], users))
+    match users:
+        case list() if len(users):
+            return list(map(lambda user: user['name'], users))
+        case _:
+            return "Ошибка при передаче данных"
 
 
 users = [
@@ -25,5 +28,39 @@ users = [
 ]
 
 print(get_user_names(users))  # ['Vasya', 'Bob', 'Alex']
-print(get_user_names([])) # None
-print(get_user_names('hello')) # None
+print(get_user_names([])) # Ошибка при передаче данных
+print(get_user_names('hello')) # Ошибка при передаче данных
+
+
+def sigh_up(user_data: tuple) -> None:
+    match user_data:
+        case str(name), int(age), bool(expirience):
+            print(f"""
+                Регистрация нового пользователя: 
+                Имя: {name}
+                Возраст: {age}
+                Наличие опыта: {expirience}
+            """)
+        case _:
+            raise Exception('Ошибка при передаче данных')
+
+
+# sigh_up(('Alex', 39, True))
+# sigh_up(('Alex', '39', 123))
+# sigh_up(('Alex', 39))
+
+
+def sigh_up(user: dict) -> None:
+    match user:
+        case {'name': str(user_name), 'age': int(user_age)}:
+            print(f"""
+                Регистрация нового пользователя: 
+                Имя: {user_name}
+                Возраст: {user_age}
+            """)
+        case _:
+            raise Exception('Ошибка при передаче данных')
+
+
+# sigh_up({'name': 'Alex', 'age': 39})
+# sigh_up({'name': 'Alex', 'age': '39'})
