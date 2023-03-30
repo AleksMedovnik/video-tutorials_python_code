@@ -22,7 +22,7 @@ print('Hello' + "World")  # HelloWorld - конкатенация
 
 
 # calculator
-print(eval(input(': ')))
+# print(eval(input(': ')))
 
 
 # homework
@@ -43,4 +43,11 @@ print(eval(input(': ')))
 15 % 4 > 3
 10 // 3 < 10 / 3
 '''
-print()
+
+x = 1
+y = 1
+print(x == y)
+print(x is y)
+
+values = (1, 2, 3)
+values2 = values

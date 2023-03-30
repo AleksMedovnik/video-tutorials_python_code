@@ -6,7 +6,7 @@
 
 try:
     print('Подключились к ресурсу')
-    print(x)
+    # print(x)
     print(2)
 except ZeroDivisionError:
     print('На 0 делить нельзя!')
@@ -14,6 +14,8 @@ except ValueError:
     print('Ошибка при преобразовании!')
 except Exception as e:
     print(e)
+else:
+    print('Операция прошла успешно!')
 finally:
     print('Выход из системы')
 
@@ -31,3 +33,5 @@ try:
     x = User('X') # Exception: Имя слишком короткое!
 except Exception as e:
     print(e)
+
+
