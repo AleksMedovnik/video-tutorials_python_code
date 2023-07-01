@@ -208,3 +208,33 @@ print(Rect.count_instances()) # 1
 print(rect1.count_instances()) # 1
 
 print(Rect.get_perimeter_rect(30, 40)) # 140
+
+
+
+class Rect:
+    total_instances = 0
+
+    def __init__(self, width, height):
+        Rect.total_instances += 1
+        self.width = width
+        self.height = height
+
+    def perimeter(self):
+        return (self.width + self.height) * 2
+
+    # метод класса
+    @classmethod
+    def count_instances(cls):
+        return cls.total_instances
+
+
+class Square(Rect):
+    total_instances = 0
+
+    def __init__(self, width):
+        super().__init__(width, width)
+        Square.total_instances += 1
+
+
+sqare = Square(150)
+print(sqare.perimeter())
