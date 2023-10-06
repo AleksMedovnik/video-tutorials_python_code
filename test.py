@@ -1,10 +1,14 @@
+
 from dataclasses import dataclass, field
+
+
+# dataclasses
 
 class User:
     def __init__(self, name, age):
         self.name = name
         self.age = age
-    
+
     def __repr__(self):
         return self.name
 
@@ -17,9 +21,9 @@ print(u)
 class User:
     name: str
     age: int
-    is_student: bool = False # в конце
+    is_student: bool = False  # в конце
     friends: list = field(default_factory=list)
-    
+
 
 user = User('Вася', 20, True, ['Маша', 'Даша', 'Саша'])
 print(user)
@@ -37,3 +41,13 @@ class Rectangle:
 
 rect = Rectangle(30, 20)
 print(rect)
+
+
+print(hash((1, 2, 3)))
+print(hash((1, 2, 3)))
+
+
+#################################################
+
+
+
